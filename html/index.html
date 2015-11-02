@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Snake 'Em All</title>
+    <link rel="stylesheet" type="text/css" href="../css/snake.css">
+  </head>
+  <body>
+    <h1>Gotta Snake 'Em All!</h1>
+
+    <div class="game-container">
+      <figure id="snake-game">
+        <div class="start">
+          <h1>Start: Space bar</h1>
+          <h3>Keys: Up Down Left Right (arrow keys)</h1>
+        </div>
+
+        <div class="stop">
+          <h1>Game over!</h1>
+          <p>Restart: Space bar</p>
+        </div>
+      </figure>
+    </div>
+
+
+    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../js/coord.js"></script>
+    <script type="text/javascript" src="../js/pokemon.js"></script>
+    <script type="text/javascript" src="../js/snake.js"></script>
+    <script type="text/javascript" src="../js/board.js"></script>
+    <script type="text/javascript" src="../js/snake-view.js"></script>
+
+    <script>
+      $(function () {
+        new SG.View($("#snake-game"))
+      });
+    </script>
+  </body>
+</html>

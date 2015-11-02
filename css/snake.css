@@ -1,0 +1,247 @@
+html, body, figure, figcaption, ul, li, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  text-align: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 30px;
+}
+
+.game-container {
+  position: relative;
+}
+
+figure {
+  display: inline-block;
+  border: 1px solid black;
+  background: url('../images/pokemon-field.png');
+  background-size: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+ul:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+li {
+  float: left;
+  width: 32px;
+  height: 32px;
+}
+
+.snake {
+  background: url('../images/pokeball2.png');
+  /*background: url('../images/pokeball.gif');*/
+  background-repeat: no-repeat;
+}
+
+
+/*  ash ketchum  */
+
+.ash-w {
+  background: url('../images/ash-west.gif');
+  background-repeat: no-repeat;
+}
+
+.ash-n {
+  background: url('../images/ash-north.gif');
+  background-repeat: no-repeat;
+}
+
+.ash-e {
+  background: url('../images/ash-east.gif');
+  background-repeat: no-repeat;
+}
+
+.ash-s {
+  background: url('../images/ash-south.gif');
+  background-repeat: no-repeat;
+}
+
+
+/*  pokemon  */
+
+.pokemon1 {
+  background: url('../images/pokemon/025.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon2 {
+  background: url('../images/pokemon/001.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon3 {
+  background: url('../images/pokemon/002.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon4 {
+  background: url('../images/pokemon/003.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon5 {
+  background: url('../images/pokemon/004.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon6 {
+  background: url('../images/pokemon/005.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon7 {
+  background: url('../images/pokemon/006.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon8 {
+  background: url('../images/pokemon/007.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon9 {
+  background: url('../images/pokemon/008.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon10 {
+  background: url('../images/pokemon/009.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon11 {
+  background: url('../images/pokemon/010.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon12 {
+  background: url('../images/pokemon/011.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon13 {
+  background: url('../images/pokemon/012.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon14 {
+  background: url('../images/pokemon/013.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon15 {
+  background: url('../images/pokemon/014.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon16 {
+  background: url('../images/pokemon/015.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon17 {
+  background: url('../images/pokemon/016.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon18 {
+  background: url('../images/pokemon/017.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon19 {
+  background: url('../images/pokemon/019.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon20 {
+  background: url('../images/pokemon/020.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon21 {
+  background: url('../images/pokemon/021.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon22 {
+  background: url('../images/pokemon/022.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon23 {
+  background: url('../images/pokemon/024.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon24 {
+  background: url('../images/pokemon/026.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon25 {
+  background: url('../images/pokemon/027.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon26 {
+  background: url('../images/pokemon/028.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon27 {
+  background: url('../images/pokemon/029.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon28 {
+  background: url('../images/pokemon/030.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon29 {
+  background: url('../images/pokemon/031.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon30 {
+  background: url('../images/pokemon/032.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon31 {
+  background: url('../images/pokemon/033.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon32 {
+  background: url('../images/pokemon/034.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon33 {
+  background: url('../images/pokemon/035.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon34 {
+  background: url('../images/pokemon/069.gif');
+  background-repeat: no-repeat;
+}
