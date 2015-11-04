@@ -6,6 +6,7 @@
   var Board = SG.Board = function (dim) {
     this.dim     = dim;
     this.snake   = new SG.Snake(this);
+    this.snakeAI = new SG.SnakeAI(this);
     this.pokemon = new SG.Pokemon(this);
   };
 
@@ -28,7 +29,9 @@
   Board.prototype.render = function () {
     var grid = Board.blankGrid(this.dim);
 
-    this.snake.segments.forEach(function (segment) {
+    var segments = this.snake.segments.concat(this.snakeAI.segments);
+
+    segments.forEach(function (segment) {
       grid[segment.x][segment.y] = Snake.SYMBOL;
     });
 

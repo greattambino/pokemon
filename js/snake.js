@@ -6,6 +6,7 @@
   var Snake = SG.Snake = function(board) {
     this.dir = "N";
     this.board = board;
+    this.score = 0;
 
     var center = new SG.Coord(Math.floor(board.dim/2), Math.floor(board.dim/2))
     this.segments = [center];
@@ -96,5 +97,9 @@
     } else {
       this.dir = dir;
     }
+  };
+
+  Snake.prototype.increaseScore = function () {
+    this.score += (this.segments.length - 1);
   };
 })(this);

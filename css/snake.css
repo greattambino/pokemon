@@ -24,7 +24,7 @@ h1 {
 figure {
   display: inline-block;
   border: 1px solid black;
-  background: url('../images/pokemon-field.png');
+  background: url('../images/pokemon-field1.png');
   background-size: 100%;
 }
 
@@ -47,6 +47,33 @@ li {
 .snake {
   background: url('../images/pokeball2.png');
   /*background: url('../images/pokeball.gif');*/
+  background-repeat: no-repeat;
+}
+
+.snakeAI {
+  background: url('../images/pokeball-ai.png');
+  background-repeat: no-repeat;
+}
+
+/*  ai character  */
+
+.ai-w {
+  background: url('../images/ai-west.gif');
+  background-repeat: no-repeat;
+}
+
+.ai-n {
+  background: url('../images/ai-north.gif');
+  background-repeat: no-repeat;
+}
+
+.ai-e {
+  background: url('../images/ai-east.gif');
+  background-repeat: no-repeat;
+}
+
+.ai-s {
+  background: url('../images/ai-south.gif');
   background-repeat: no-repeat;
 }
 
