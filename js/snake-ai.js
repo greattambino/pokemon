@@ -121,6 +121,7 @@
     var segments = this.segments.concat(this.board.snake.segments);
 
     for (var i = 0; i < coords.length; i++) {
+      // if this coord is not valid
       if (!this.isValid(coords[i].coord)) {
         delete coords[i];
       }
@@ -136,7 +137,8 @@
   SnakeAI.prototype.isValid = function (pos) {
     var head = this.head();
 
-    if (!this.board.validPosition(this.head())) { return false; }
+    //return false if this position is not valid
+    if (!this.board.validPosition(pos)) { return false; }
 
     for (var i = 0; i < this.segments.length - 1; i++) {
       if (this.segments[i].equals(pos)) { return false; }

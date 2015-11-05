@@ -56,7 +56,8 @@
 
   View.prototype.updateClasses = function (coords, className) {
     // remove classNames for li's
-    var i = this.board.snake.segments.length;
+    var segments = this.board.snake.segments.concat(this.board.snakeAI.segments);
+    var i = segments.length - 1;
 
     if (className === "pokemon") {
       this.$li.filter("." + className + i.toString()).removeClass();

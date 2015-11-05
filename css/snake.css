@@ -19,10 +19,13 @@ h1 {
 
 .game-container {
   position: relative;
+  height: 544px;
+  display: inline-block;
 }
 
 figure {
   display: inline-block;
+  float: left;
   border: 1px solid black;
   background: url('../images/pokemon-field1.png');
   background-size: 100%;
@@ -42,6 +45,22 @@ li {
   float: left;
   width: 32px;
   height: 32px;
+}
+
+.ai-scoreboard {
+  float: left;
+  border: 1px solid black;
+  height: 544px;
+  width: 100px;
+  background-color: #ccc;
+}
+
+.ash-scoreboard {
+  float: left;
+  border: 1px solid black;
+  height: 544px;
+  width: 100px;
+  background-color: #ccc;
 }
 
 .snake {
@@ -114,42 +133,42 @@ li {
 }
 
 .pokemon3 {
-  background: url('../images/pokemon/002.gif');
-  background-repeat: no-repeat;
-}
-
-.pokemon4 {
-  background: url('../images/pokemon/003.gif');
-  background-repeat: no-repeat;
-}
-
-.pokemon5 {
   background: url('../images/pokemon/004.gif');
   background-repeat: no-repeat;
 }
 
-.pokemon6 {
-  background: url('../images/pokemon/005.gif');
-  background-repeat: no-repeat;
-}
-
-.pokemon7 {
-  background: url('../images/pokemon/006.gif');
-  background-repeat: no-repeat;
-}
-
-.pokemon8 {
+.pokemon4 {
   background: url('../images/pokemon/007.gif');
   background-repeat: no-repeat;
 }
 
+.pokemon5 {
+  background: url('../images/pokemon/037.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon6 {
+  background: url('../images/pokemon/038.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon7 {
+  background: url('../images/pokemon/041.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon8 {
+  background: url('../images/pokemon/039.gif');
+  background-repeat: no-repeat;
+}
+
 .pokemon9 {
-  background: url('../images/pokemon/008.gif');
+  background: url('../images/pokemon/043.gif');
   background-repeat: no-repeat;
 }
 
 .pokemon10 {
-  background: url('../images/pokemon/009.gif');
+  background: url('../images/pokemon/044.gif');
   background-repeat: no-repeat;
 }
 
@@ -270,5 +289,100 @@ li {
 
 .pokemon34 {
   background: url('../images/pokemon/069.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon35 {
+  background: url('../images/pokemon/045.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon36 {
+  background: url('../images/pokemon/046.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon37 {
+  background: url('../images/pokemon/047.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon38 {
+  background: url('../images/pokemon/048.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon39 {
+  background: url('../images/pokemon/049.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon40 {
+  background: url('../images/pokemon/050.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon41 {
+  background: url('../images/pokemon/052.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon42 {
+  background: url('../images/pokemon/054.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon43 {
+  background: url('../images/pokemon/055.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon44 {
+  background: url('../images/pokemon/056.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon45 {
+  background: url('../images/pokemon/058.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon46 {
+  background: url('../images/pokemon/059.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon47 {
+  background: url('../images/pokemon/060.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon48 {
+  background: url('../images/pokemon/061.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon49 {
+  background: url('../images/pokemon/063.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon50 {
+  background: url('../images/pokemon/064.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon51 {
+  background: url('../images/pokemon/066.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon52 {
+  background: url('../images/pokemon/067.gif');
+  background-repeat: no-repeat;
+}
+
+.pokemon53 {
+  background: url('../images/pokemon/055.gif');
   background-repeat: no-repeat;
 }
