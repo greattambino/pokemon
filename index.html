@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Snake 'Em All</title>
-    <link rel="stylesheet" type="text/css" href="../css/snake.css">
+    <link rel="stylesheet" type="text/css" href="./css/snake.css">
   </head>
   <body>
-    <div class="header"><img src="../images/pokemon-title.png" /></div>
+    <div class="header"><img src="./images/pokemon-title.png" /></div>
 
     <div class="game-container">
       <div class="ash-scoreboard"></div>
@@ -31,17 +31,19 @@
     </div>
 
 
-    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="../js/coord.js"></script>
-    <script type="text/javascript" src="../js/pokemon.js"></script>
-    <script type="text/javascript" src="../js/snake.js"></script>
-    <script type="text/javascript" src="../js/snake-ai.js"></script>
-    <script type="text/javascript" src="../js/board.js"></script>
-    <script type="text/javascript" src="../js/snake-view.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="./js/coord.js"></script>
+    <script type="text/javascript" src="./js/pokemon.js"></script>
+    <script type="text/javascript" src="./js/snake.js"></script>
+    <script type="text/javascript" src="./js/snake-ai.js"></script>
+    <script type="text/javascript" src="./js/board.js"></script>
+    <script type="text/javascript" src="./js/snake-view.js"></script>
 
     <script>
       $(function () {
+        // new SG.AshScore($("#ash-scoreboard"))
         new SG.View($("#snake-game"))
+        // new SG.AIScore($("#ai-scoreboard"))
       });
     </script>
   </body>
