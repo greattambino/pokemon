@@ -9,41 +9,139 @@
     this.$el = $el;
     this.board = new SG.Board(BOARD_SIZE);
     this.setupGrid();
+    this.started = false;
+    this.paused = false;
+    this.ended = false;
+    this.speed = View.DEFAULT_SPEED;
 
-    this.intervalId = window.setInterval(this.step.bind(this), 200);
-
+    $('.pause').hide()
+    $('.game-over').hide()
     $(window).on("keydown", this.handleKeyDown.bind(this));
+    $(window).on("keyup",   this.handleKeyUp.bind(this));
   };
 
-  // View.prototype.start = function (e) {
-  //   e.preventDefault();
-  //
-  //
-  // };
+  View.DEFAULT_SPEED = 200;
+  View.FAST_SPEED = 50;
+
+  View.prototype.start = function () {
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      this.speed
+    );
+    this.ended = false;
+    this.started = true;
+    this.updateGameMenu();
+  };
+
+  View.prototype.restart = function () {
+    this.board = new SG.Board(BOARD_SIZE);
+    this.setupGrid();
+    this.speed = View.DEFAULT_SPEED;
+
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      this.speed
+    );
+    $('.pause').hide()
+    $('.game-over').hide()
+    this.ended = false;
+    this.paused = false;
+    this.started = true;
+    this.updateGameMenu();
+  };
 
   View.prototype.step = function () {
     var snake = this.board.snake;
     var snakeAI = this.board.snakeAI;
 
-    if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
-      snake.move();
-      snakeAI.move();
-      this.render();
-    } else {
-      alert("Game Over!");
-      window.clearInterval(this.intervalId);
+    if (!this.paused) {
+      if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
+        snake.move();
+        snakeAI.move();
+        this.render();
+      } else {
+        this.gameOver();
+      }
     }
   };
 
-  View.prototype.handleKeyDown = function (e) {
-    var snake = this.board.snake;
+  View.prototype.gameOver = function () {
+    window.clearInterval(this.intervalId);
+    this.ended = true;
+    this.started = false;
+    this.updateGameMenu();
+  };
 
+  View.prototype.handleKeyDown = function (e) {
+    e.preventDefault();
+    var snake = this.board.snake;
+    // handle space keyDown to start
+    if (!this.started &&
+      !this.paused &&
+      e.keyCode == 32) {
+        if (!this.ended) {
+          this.start();
+        } else {
+          this.restart();
+        }
+    }
+    // handle "space" keyDown during game to increase speed
+    if (this.started &&
+      e.keyCode == 32 &&
+      this.speed !== View.FAST_SPEED) {
+      this.updateInterval(View.FAST_SPEED);
+    // handle "p" keyDown to toggle pause
+    } else if (this.started && e.keyCode == 80) {
+      this.paused = !this.paused;
+      this.updateGameMenu();
+    }
+
+    // handle arrow keys to turn
     switch (e.keyCode) {
       case 37: snake.turn("W"); break;
       case 38: snake.turn("N"); break;
       case 39: snake.turn("E"); break;
       case 40: snake.turn("S"); break;
     }
+  };
+
+  View.prototype.updateGameMenu = function () {
+    if (!this.started && !this.ended) {
+      $('.menu').show()
+      $('.start').show()
+    } else if (!this.started && this.ended) {
+      $('.menu').show()
+      $('.game-over').show()
+    } else if (this.started && !this.paused) {
+      $('.menu').hide()
+      $('.pause').hide()
+    } else if (this.started && this.paused) {
+      $('.menu').show()
+      $('.pause').show()
+      $('.start').hide()
+      $('.game-over').hide()
+    } else if (!this.paused) {
+      $('.menu').hide()
+      $('.pause').hide()
+    }
+  };
+
+  View.prototype.handleKeyUp = function (e) {
+    // handle "space" keyUp during game to revert to default speed
+    console.log('keyup');
+    if (this.started && e.keyCode == 32) {
+      this.updateInterval(View.DEFAULT_SPEED);
+    }
+  };
+
+  View.prototype.updateInterval = function (new_speed) {
+    console.log('updating interval speed');
+    window.clearInterval(this.intervalId);
+    this.speed = new_speed;
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      new_speed
+    );
   };
 
   View.prototype.render = function () {

@@ -23,6 +23,21 @@ h1 {
   display: inline-block;
 }
 
+.menu {
+  display: block;
+  position: absolute;
+  width: 350px;
+  height: 250px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  opacity: .7;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+}
+
 figure {
   display: inline-block;
   float: left;
