@@ -8,7 +8,8 @@
     this.board = board;
     this.score = 0;
 
-    var center = new SG.Coord(Math.floor(board.dim/2), Math.floor(board.dim/2))
+    var center = new SG.Coord(Math.floor(board.dim/2),
+                              Math.floor(board.dim/2));
     this.segments = [center];
     this.growTurns = 0;
   };
@@ -24,9 +25,10 @@
 
   Snake.prototype.catchPokemon = function () {
     var head = this.head();
-    var pokemon = this.board.pokemon.position
+    var pokemon = this.board.pokemon.position;
     if (head.equals(pokemon)) {
       this.growTurns += 1;
+      this.score += 1;
       return true;
     } else {
       return false;
@@ -97,9 +99,5 @@
     } else {
       this.dir = dir;
     }
-  };
-
-  Snake.prototype.increaseScore = function () {
-    this.score += (this.segments.length - 1);
   };
 })(this);

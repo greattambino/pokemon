@@ -9,7 +9,7 @@
     this.score = 0;
 
     var center = new SG.Coord(Math.floor(board.dim/2) -1,
-                              Math.floor(board.dim/2) -1)
+                              Math.floor(board.dim/2) -1);
     this.segments = [center];
     this.growTurns = 0;
   };
@@ -18,9 +18,10 @@
 
   SnakeAI.prototype.catchPokemon = function () {
     var head = this.head();
-    var pokemon = this.board.pokemon.position
+    var pokemon = this.board.pokemon.position;
     if (head.equals(pokemon)) {
       this.growTurns += 1;
+      this.score += 1;
       return true;
     } else {
       return false;
@@ -55,7 +56,6 @@
     // catch pokemon
     if (this.catchPokemon()) {
       this.board.pokemon.replace();
-      this.increaseScore();
     }
 
     // if not growing, remove tail segment
@@ -70,12 +70,6 @@
     //   this.segments = [];
     // }
   };
-
-
-  SnakeAI.prototype.increaseScore = function () {
-    this.score += (this.segments.length - 1);
-  };
-
 
   SnakeAI.prototype.neighbors = function (pos) {
     var x = pos.x,
@@ -117,7 +111,7 @@
 
   SnakeAI.prototype.nextPos = function () {
     var head = this.head();
-    var coords = this.neighbors(head)
+    var coords = this.neighbors(head);
     var segments = this.segments.concat(this.board.snake.segments);
 
     for (var i = 0; i < coords.length; i++) {

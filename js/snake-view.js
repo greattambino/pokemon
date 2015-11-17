@@ -9,13 +9,16 @@
     this.$el = $el;
     this.board = new SG.Board(BOARD_SIZE);
     this.setupGrid();
+    this.setupScoreboards();
     this.started = false;
     this.paused = false;
     this.ended = false;
     this.speed = View.DEFAULT_SPEED;
+    this.scoreboard = [];
+    this.scoreboardAi = [];
 
-    $('.pause').hide()
-    $('.game-over').hide()
+    $('.pause').hide();
+    $('.game-over').hide();
     $(window).on("keydown", this.handleKeyDown.bind(this));
     $(window).on("keyup",   this.handleKeyUp.bind(this));
   };
@@ -23,74 +26,6 @@
   View.DEFAULT_SPEED = 200;
   View.FAST_SPEED = 50;
 
-  View.prototype.start = function () {
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      this.speed
-    );
-
-    this.intervalIdAi = window.setInterval(
-      this.stepAi.bind(this),
-      View.DEFAULT_SPEED
-    );
-    
-    this.ended = false;
-    this.started = true;
-    this.updateGameMenu();
-  };
-
-  View.prototype.restart = function () {
-    this.board = new SG.Board(BOARD_SIZE);
-    this.setupGrid();
-    this.speed = View.DEFAULT_SPEED;
-
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      this.speed
-    );
-
-    this.intervalIdAi = window.setInterval(
-      this.stepAi.bind(this),
-      View.DEFAULT_SPEED
-    );
-
-    $('.pause').hide()
-    $('.game-over').hide()
-    this.ended = false;
-    this.paused = false;
-    this.started = true;
-    this.updateGameMenu();
-  };
-
-  View.prototype.stepAi = function () {
-    var snake = this.board.snake;
-    var snakeAI = this.board.snakeAI;
-
-    if (!this.paused) {
-      if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
-        // snake.move();
-        snakeAI.move();
-        this.render();
-      } else {
-        this.gameOver();
-      }
-    }
-  };
-
-  View.prototype.step = function () {
-    var snake = this.board.snake;
-    var snakeAI = this.board.snakeAI;
-
-    if (!this.paused) {
-      if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
-        snake.move();
-        // snakeAI.move();
-        this.render();
-      } else {
-        this.gameOver();
-      }
-    }
-  };
 
   View.prototype.gameOver = function () {
     window.clearInterval(this.intervalId);
@@ -133,43 +68,11 @@
     }
   };
 
-  View.prototype.updateGameMenu = function () {
-    if (!this.started && !this.ended) {
-      $('.menu').show()
-      $('.start').show()
-    } else if (!this.started && this.ended) {
-      $('.menu').show()
-      $('.start').hide()
-      $('.game-over').show()
-    } else if (this.started && !this.paused) {
-      $('.menu').hide()
-      $('.pause').hide()
-    } else if (this.started && this.paused) {
-      $('.menu').show()
-      $('.pause').show()
-      $('.start').hide()
-      $('.game-over').hide()
-    } else if (!this.paused) {
-      $('.menu').hide()
-      $('.pause').hide()
-    }
-  };
-
   View.prototype.handleKeyUp = function (e) {
     // handle "space" keyUp during game to revert to default speed
     if (this.started && e.keyCode == 32) {
       this.updateInterval(View.DEFAULT_SPEED);
     }
-  };
-
-  View.prototype.updateInterval = function (new_speed) {
-    console.log('updating interval speed');
-    window.clearInterval(this.intervalId);
-    this.speed = new_speed;
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      new_speed
-    );
   };
 
   View.prototype.render = function () {
@@ -178,6 +81,112 @@
     this.updateClasses(this.board.snakeAI.segments, "snakeAI");
     this.updateClasses(this.board.snakeAI.segments.slice(-1), "ai");
     this.updateClasses([this.board.pokemon.position], "pokemon");
+    this.updateScores(this.board.snake.score, "snake");
+    this.updateScores(this.board.snakeAI.score, "snakeAI");
+  };
+
+  View.prototype.restart = function () {
+    this.board = new SG.Board(BOARD_SIZE);
+    this.setupGrid();
+    this.setupScoreboards();
+    this.speed = View.DEFAULT_SPEED;
+
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      this.speed
+    );
+
+    this.intervalIdAi = window.setInterval(
+      this.stepAi.bind(this),
+      View.DEFAULT_SPEED
+    );
+
+    $('.pause').hide();
+    $('.game-over').hide();
+    this.ended = false;
+    this.paused = false;
+    this.started = true;
+    this.updateGameMenu();
+  };
+  
+  View.prototype.setupGrid = function () {
+    var html = "";
+
+    for (var i = 0; i < BOARD_SIZE; i++) {
+      html += "<ul>";
+      for (var j = 0; j < BOARD_SIZE; j++) {
+        html += "<li></li>";
+      }
+      html += "</ul>";
+    }
+
+    this.$el.html(html);
+    this.$li = this.$el.find("li");
+  };
+
+  View.prototype.setupScoreboards = function () {
+    var html = "";
+    var count = 0;
+
+    for (var i = 0; i < BOARD_SIZE; i++) {
+      html += "<ul>";
+      for (var j = 0; j < 3; j++) {
+        html += "<li></li>";
+        count += 1;
+      }
+      html += "</ul>";
+    }
+
+    $( ".snake-scoreboard" ).html( html );
+    $( ".snakeAI-scoreboard" ).html( html );
+    this.$snakeLi = $( ".snake-scoreboard" ).find("li");
+    this.$snakeAILi = $( ".snakeAI-scoreboard" ).find("li");
+  };
+
+  View.prototype.start = function () {
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      this.speed
+    );
+
+    this.intervalIdAi = window.setInterval(
+      this.stepAi.bind(this),
+      View.DEFAULT_SPEED
+    );
+
+    this.ended = false;
+    this.started = true;
+    this.updateGameMenu();
+  };
+
+  View.prototype.step = function () {
+    var snake = this.board.snake;
+    var snakeAI = this.board.snakeAI;
+
+    if (!this.paused) {
+      if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
+        snake.move();
+        // snakeAI.move();
+        this.render();
+      } else {
+        this.gameOver();
+      }
+    }
+  };
+
+  View.prototype.stepAi = function () {
+    var snake = this.board.snake;
+    var snakeAI = this.board.snakeAI;
+
+    if (!this.paused) {
+      if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
+        // snake.move();
+        snakeAI.move();
+        this.render();
+      } else {
+        this.gameOver();
+      }
+    }
   };
 
   View.prototype.updateClasses = function (coords, className) {
@@ -229,18 +238,45 @@
     }.bind(this));
   };
 
-  View.prototype.setupGrid = function () {
-    var html = "";
-
-    for (var i = 0; i < BOARD_SIZE; i++) {
-      html += "<ul>";
-      for (var j = 0; j < BOARD_SIZE; j++) {
-        html += "<li></li>";
-      }
-      html += "</ul>";
+  View.prototype.updateGameMenu = function () {
+    if (!this.started && !this.ended) {
+      $('.menu').show();
+      $('.start').show();
+    } else if (!this.started && this.ended) {
+      $('.menu').show();
+      $('.start').hide();
+      $('.game-over').show();
+    } else if (this.started && !this.paused) {
+      $('.menu').hide();
+      $('.pause').hide();
+    } else if (this.started && this.paused) {
+      $('.menu').show();
+      $('.pause').show();
+      $('.start').hide();
+      $('.game-over').hide();
+    } else if (!this.paused) {
+      $('.menu').hide();
+      $('.pause').hide();
     }
+  };
 
-    this.$el.html(html);
-    this.$li = this.$el.find("li");
+  View.prototype.updateInterval = function (new_speed) {
+    console.log('updating interval speed');
+    window.clearInterval(this.intervalId);
+    this.speed = new_speed;
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      new_speed
+    );
+  };
+
+  View.prototype.updateScores = function (score, className) {
+    if (score > 0) {
+      if (className === "snake") {
+        this.$snakeLi.eq(score - 1).addClass(className);
+      } else {
+        this.$snakeAILi.eq(score - 1).addClass(className);
+      }
+    }
   };
 })();
