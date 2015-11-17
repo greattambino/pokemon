@@ -28,6 +28,12 @@
       this.step.bind(this),
       this.speed
     );
+
+    this.intervalIdAi = window.setInterval(
+      this.stepAi.bind(this),
+      View.DEFAULT_SPEED
+    );
+    
     this.ended = false;
     this.started = true;
     this.updateGameMenu();
@@ -42,12 +48,33 @@
       this.step.bind(this),
       this.speed
     );
+
+    this.intervalIdAi = window.setInterval(
+      this.stepAi.bind(this),
+      View.DEFAULT_SPEED
+    );
+
     $('.pause').hide()
     $('.game-over').hide()
     this.ended = false;
     this.paused = false;
     this.started = true;
     this.updateGameMenu();
+  };
+
+  View.prototype.stepAi = function () {
+    var snake = this.board.snake;
+    var snakeAI = this.board.snakeAI;
+
+    if (!this.paused) {
+      if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
+        // snake.move();
+        snakeAI.move();
+        this.render();
+      } else {
+        this.gameOver();
+      }
+    }
   };
 
   View.prototype.step = function () {
@@ -57,7 +84,7 @@
     if (!this.paused) {
       if (snake.segments.length > 0 && snakeAI.segments.length > 0) {
         snake.move();
-        snakeAI.move();
+        // snakeAI.move();
         this.render();
       } else {
         this.gameOver();
@@ -67,6 +94,7 @@
 
   View.prototype.gameOver = function () {
     window.clearInterval(this.intervalId);
+    window.clearInterval(this.intervalIdAi);
     this.ended = true;
     this.started = false;
     this.updateGameMenu();
@@ -129,7 +157,6 @@
 
   View.prototype.handleKeyUp = function (e) {
     // handle "space" keyUp during game to revert to default speed
-    console.log('keyup');
     if (this.started && e.keyCode == 32) {
       this.updateInterval(View.DEFAULT_SPEED);
     }
