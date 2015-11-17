@@ -17,6 +17,13 @@ h1 {
   margin: 30px;
 }
 
+.header {
+  height: 80px;
+}
+
+.header > img {
+  height: 83px;
+}
 .game-container {
   position: relative;
   height: 544px;
