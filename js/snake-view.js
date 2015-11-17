@@ -111,6 +111,7 @@
       $('.start').show()
     } else if (!this.started && this.ended) {
       $('.menu').show()
+      $('.start').hide()
       $('.game-over').show()
     } else if (this.started && !this.paused) {
       $('.menu').hide()
