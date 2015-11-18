@@ -58,7 +58,6 @@
       this.paused = !this.paused;
       this.updateGameMenu();
     }
-
     // handle arrow keys to turn
     switch (e.keyCode) {
       case 37: snake.turn("W"); break;
@@ -108,7 +107,7 @@
     this.started = true;
     this.updateGameMenu();
   };
-  
+
   View.prototype.setupGrid = function () {
     var html = "";
 

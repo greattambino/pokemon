@@ -115,7 +115,7 @@
     var segments = this.segments.concat(this.board.snake.segments);
 
     for (var i = 0; i < coords.length; i++) {
-      // if this coord is not valid
+      // if this coord is not valid, disregard it
       if (!this.isValid(coords[i].coord)) {
         delete coords[i];
       }
