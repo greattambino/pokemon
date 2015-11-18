@@ -1,7 +1,7 @@
 # Pokemon - Gotta Catch 'Em All
 A game inspired by the classic game of Snake with a Pokemon twist
 
-[Live link!](www.marctambara.com/pokemon)
+[Live link!](http://www.marctambara.com/pokemon)
 
 ##Summary
 Compete against an AI player to catch the most Pokemon before dying.
@@ -10,7 +10,7 @@ It's a little tricky because the AI uses the Manhattan distance heuristic to cal
 
 However, don't fret! I've given you the ability to run like Usain Bolt. Just hold down the space bar to get that quick boost in speed and give yourself an advantage that makes up for our slow reaction times.
 
-![Pokemon](/screenshot.jpg)
+![Pokemon](/screenshot.png)
 
 ##Game
  - Utilizes jQuery key listeners for real-time DOM manipulation
