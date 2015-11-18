@@ -10,7 +10,7 @@ It's a little tricky because the AI uses the Manhattan distance heuristic to cal
 
 However, don't fret! I've given you the ability to run like Usain Bolt. Just hold down the space bar to get that quick boost in speed and give yourself an advantage that makes up for our slow reaction times.
 
-![Pokemon](/screenshot.png)
+![Pokemon](/images/screenshot.png)
 
 ##Game
  - Utilizes jQuery key listeners for real-time DOM manipulation
