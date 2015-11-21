@@ -6,7 +6,7 @@ A game inspired by the classic game of Snake with a Pokemon twist
 ##Summary
 Compete against an AI player to catch the most Pokemon before dying.
 
-It's a little tricky because the AI uses the Manhattan distance heuristic to calculate the minimum cost and optimal path to the target coordinate.
+It's a little tricky because the AI uses the Manhattan distance as the heuristic in the A-star algorithm to calculate the minimum cost and optimal path to the target coordinate.
 
 However, don't fret! I've given you the ability to run like Usain Bolt. Just hold down the space bar to get that quick boost in speed and give yourself an advantage that makes up for our slow reaction times.
 

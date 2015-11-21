@@ -90,7 +90,7 @@
       nodes.push({
         node: node.coord,
         dir: node.dir,
-        cost: this.heuristicCost(node.coord, goal)
+        cost: this.heuristicCost(node.coord, goal) // getting the cost from current node to goal
       });
     }.bind(this));
 
@@ -103,7 +103,7 @@
   };
 
   SnakeAI.prototype.heuristicCost = function (node, goal) {
-    // This is the Manhattan distance. Cost of moving 1 position is 1
+    // This is the Manhattan distance heuristic. Cost of moving 1 position is 1
     var d1 = Math.abs(goal.x - node.x);
     var d2 = Math.abs(goal.y - node.y);
     return d1 + d2;

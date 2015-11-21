@@ -87,14 +87,12 @@ li {
 
 .snake {
   background: url('../images/pokeball2.png');
-  /*background: url('../images/pokeball.gif');*/
   background-repeat: no-repeat;
 }
 
 .snakeAI {
   background: url('../images/pokeball-ai.png');
   background-repeat: no-repeat;
-  z-index: 100;
 }
 
 /*  ai character  */

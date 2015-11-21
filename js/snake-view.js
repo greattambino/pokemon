@@ -75,10 +75,10 @@
   };
 
   View.prototype.render = function () {
-    this.updateClasses(this.board.snake.segments, "snake");
-    this.updateClasses(this.board.snake.segments.slice(-1), "ash");
     this.updateClasses(this.board.snakeAI.segments, "snakeAI");
     this.updateClasses(this.board.snakeAI.segments.slice(-1), "ai");
+    this.updateClasses(this.board.snake.segments, "snake");
+    this.updateClasses(this.board.snake.segments.slice(-1), "ash");
     this.updateClasses([this.board.pokemon.position], "pokemon");
     this.updateScores(this.board.snake.score, "snake");
     this.updateScores(this.board.snakeAI.score, "snakeAI");
